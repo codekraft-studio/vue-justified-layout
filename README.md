@@ -2,6 +2,9 @@
 
 > A component to use Flickr justified layout with Vue.
 
+## How it looks?
+You can see the project in action on the [demo](https://codekraft-studio.github.io/vue-justified-layout/) page.
+
 ## Getting started
 Download the component with npm or yarn:
 ```
