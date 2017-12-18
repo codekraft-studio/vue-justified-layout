@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Justified Layout</title>
+  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <header class="navbar navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="https://github.com/codekraft-studio" target="_blank">
+          <img src="https://vuejs.org/images/logo.png" width="42" height="42" class="mr-2">
+          <h1 class="m-0">Vue Justified Layout</h1>
+        </a>
+      </div>
+    </header>
+
+    <main class="container">
+
+      <div class="section">
+        <h2>What it is?</h2>
+        <p class="lead">
+          It's the simplest way to integrate <a href="#">Flickr</a> justified-layout inside your VueJs applications or websites.
+          It's easy for developers to use, it fits in any kind of container, supports pagination and infinite scroll and supports layouts other than justified, like square thumbnails and grid layout with native aspect ratio.
+          If you want more informations about how the justified-layout algorithm works you can read <a href="http://code.flickr.net/2015/03/24/much-photos/">this</a> article from the script creator.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>How it works?</h2>
+        <p class="lead">
+          It’s really easy to use. No configuration is required. Just pass in an array of aspect ratios representing the photos/boxes you’d like to lay out or an array of objects.
+          It will automagically listen for items change and reload the <b>justified-layout geometry</b> that produces this awesome grid.
+        </p>
+        <vue-justified-layout :items="images" test.sync="prova" :options.sync="boxesOptions" class="random">
+          <template slot="inner" slot-scope="item">
+            <img class="inner" :src="item.url" @click="removeItem(item.index)" />
+          </template>
+        </vue-justified-layout>
+      </div>
+
+    </main>
+
+    <footer class="footer fixed-bottom bg-light">
+      <div class="container text-center">
+        Made with &hearts; by <a href="https://github.com/codekraft-studio">codekraft-studio</a>
+      </div>
+    </footer>
+
+  </div>
+  <script type="text/javascript" src="dist/build.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        boxesOptions: {
+          targetRowHeight: 120
+        },
+        images: [{
+          width: 500,
+          height: 450,
+          url: 'https://placehold.it/500/450'
+        }, {
+          width: 640,
+          height: 380,
+          url: 'https://placehold.it/640/380'
+        }, {
+          width: 440,
+          height: 620,
+          url: 'https://placehold.it/440/620'
+        }]
+      },
+      methods: {
+        addItem () {
+          let rateo = (Math.random() * (2 - 0.5) + 0.5).toFixed(2);
+          let width = Math.round(Math.random() * (1024 - 340) + 340);
+          let height = Math.round(rateo * width);
+          this.images.push({
+            width: width,
+            height: height
+          })
+        },
+        removeItem (index) {
+          this.images.splice(index, 1)
+        },
+        randomizeItems (number) {
+          number = isNaN(number) ? 12 : number
+          this.images = []
+          for (var i = 0; i < number; i++) {
+            this.addItem()
+          }
+        }
+      },
+      created: function() {
+        let self = this
+        setInterval(function () {
+          self.randomizeItems()
+        }, 2500);
+      },
+      components: {
+        'vue-justified-layout': VueJustifiedLayout
+      }
+    })
+  </script>
+</body>
+</html>
