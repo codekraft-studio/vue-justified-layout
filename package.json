@@ -2,15 +2,18 @@
   "name": "vue-justified-layout",
   "description": "A component to use Flickr justified layout with Vue.",
   "version": "0.1.0",
-  "private": false,
-  "main": "dist/vue-justified-layout.umd.js",
   "author": "codekraft-studio <info@codekraft.it>",
+  "main": "dist/vue-justified-layout.umd.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib src/components/JustifiedLayout.vue",
     "build:demo": "vue-cli-service build --dest demo",
+    "publish-demo": "git subtree push --prefix demo origin gh-pages",
     "lint": "vue-cli-service lint",
-    "test": "vue-cli-service test:unit"
+    "test": "vue-cli-service test:unit --coverage"
   },
   "dependencies": {
     "justified-layout": "^2.1.1",

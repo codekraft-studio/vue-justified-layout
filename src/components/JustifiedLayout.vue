@@ -24,6 +24,7 @@ export default {
   },
   computed: {
     geometry () {
+      if (!this.items) return
       return justifiedLayout(this.items, this.options)
     },
     boxes () {
