@@ -6,7 +6,7 @@
 
 You can see the project in action on the [demo](https://codekraft-studio.github.io/vue-justified-layout/) page.
 
-[![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 
 ## Getting started
 
@@ -71,6 +71,7 @@ You can use it with an array of aspect rateo numbers like the example above or y
   }
 }
 ```
+
 ```html
 <vue-justified-layout :items="items" :options="options"></vue-justified-layout>
 ```
@@ -112,3 +113,11 @@ This project is released under the MIT License by [codekraft-studio](https://cod
 [daviddm-image]: https://david-dm.org/codekraft-studio/vue-justified-layout.svg?theme=shields.io
 
 [daviddm-url]: https://david-dm.org/codekraft-studio/vue-justified-layout
+
+[travis-image]: https://travis-ci.org/codekraft-studio/vue-justified-layout.svg?branch=master
+
+[travis-url]: https://travis-ci.org/codekraft-studio/vue-justified-layout
+
+[coveralls-image]: https://coveralls.io/repos/codekraft-studio/vue-justified-layout/badge.svg
+
+[coveralls-url]: https://coveralls.io/r/codekraft-studio/vue-justified-layout
