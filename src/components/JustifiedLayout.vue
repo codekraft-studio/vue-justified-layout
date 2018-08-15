@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="justified-container">
+  <div class="justified-container" :style="style">
     <div class="justified-item" v-for="(box, index) in boxes" :key="index" :style="box.style">
       <slot name="inner" :item="box" :index="index"></slot>
     </div>
@@ -8,8 +8,9 @@
 
 <script>
 import justifiedLayout from 'justified-layout'
+
 export default {
-  name: 'vue-justified-layout',
+  name: 'VueJustifiedLayout',
   props: {
     items: {
       type: Array,
@@ -23,9 +24,11 @@ export default {
   },
   computed: {
     geometry () {
+      if (!this.items) return
       return justifiedLayout(this.items, this.options)
     },
     boxes () {
+      if (!this.geometry) return []
       return this.geometry.boxes.map((b, i) => {
         let obj = typeof this.items[i] === 'object' ? this.items[i] : {}
         return Object.assign(obj, {
@@ -38,32 +41,27 @@ export default {
           }
         })
       })
+    },
+    style () {
+      if (!this.geometry) return {}
+      return {
+        position: 'relative',
+        height: `${this.geometry.containerHeight}px`
+      }
     }
   },
   methods: {
-    handleResize (e) {
+    onResize () {
       this.$set(this.options, 'containerWidth', this.$el.clientWidth)
       this.$emit('update:options', this.options)
     }
   },
-  watch: {
-    geometry () {
-      this.$el.style.height = `${this.geometry.containerHeight}px`
-    }
-  },
   mounted () {
-    // Ensure element style
-    this.$el.style.position = 'relative'
-    this.$el.style.height = `${this.geometry.containerHeight}px`
-
-    // Update container width
     this.$set(this.options, 'containerWidth', this.options.containerWidth || this.$el.clientWidth)
-
-    // Add resize event listener
-    window.addEventListener('resize', this.handleResize)
+    window.addEventListener('resize', this.onResize)
   },
   beforeDestroy () {
-    window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('resize', this.onResize)
   }
 }
 </script>
