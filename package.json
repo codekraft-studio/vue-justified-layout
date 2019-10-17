@@ -1,6 +1,6 @@
 {
   "name": "vue-justified-layout",
-  "description": "A component to use Flickr justified layout with Vue.",
+  "description": "Vue integration for Flicker's justified layout module",
   "version": "0.1.0",
   "author": "codekraft-studio <info@codekraft.it>",
   "main": "dist/vue-justified-layout.umd.js",
@@ -16,19 +16,21 @@
     "test": "vue-cli-service test:unit --coverage"
   },
   "dependencies": {
-    "justified-layout": "^2.1.1",
-    "vue": "^2.5.17"
+    "justified-layout": "^3.0.0",
+    "vue": "^2.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0",
-    "@vue/cli-plugin-eslint": "^3.0.0",
-    "@vue/cli-plugin-unit-jest": "^3.0.0",
-    "@vue/cli-service": "^3.0.0",
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-plugin-unit-jest": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^23.0.1",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.17"
+    "babel-jest": "^24.9.0",
+    "coveralls": "^3.0.6",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.0.0",
+    "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.1.0"
   }
 }
