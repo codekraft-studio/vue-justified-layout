@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="justified-container" :style="style">
     <div class="justified-item" v-for="(box, index) in boxes" :key="index" :style="box.style">
-      <slot name="inner" :item="box" :index="index"></slot>
+      <slot name="content" :item="box" :index="index"></slot>
     </div>
   </div>
 </template>
