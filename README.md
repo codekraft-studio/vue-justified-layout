@@ -2,18 +2,19 @@
 
 # vue-justified-layout
 
-> A component to use Flickr justified layout with Vue.
-
-You can see the project in action on the [demo](https://codekraft-studio.github.io/vue-justified-layout/) page.
+> Vue integration for Flicker's justified layout module
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+
+Chcek out the [documentation](https://codekraft-studio.github.io/vue-justified-layout/) for a complete reference and usage examples.
 
 ## Getting started
 
 It's pretty easy to setup, just download the component with your favorite package manager.
 
-    npm install vue-justified-layout
-    yarn add vue-justified-layout
+```
+npm install vue-justified-layout
+```
 
 Import the script into your script and register the component.
 
@@ -22,43 +23,10 @@ import VueJustifiedLayout from 'vue-justified-layout'
 
 export default {
   name: 'app',
-  components: {VueJustifiedLayout}
-}
-```
-
-Than you can use it in your templates.
-
-```html
-<vue-justified-layout :items="[1, 0.5, 2, 0.5, 1]"></vue-justified-layout>
-
-<vue-justified-layout :items="imagesList" :options="{}">
-  <template slot="inner" slot-scope="slotProps">
-    <img :src="slotProps.item.url" />
-  </template>
-</vue-justified-layout>
-```
-
-For all the options you can see the [official page](http://flickr.github.io/justified-layout/), you can use them like in the example below:
-
-```html
-<vue-justified-layout :items="[1, 0.5, 2, 0.5, 1]" :options="{
-  targetRowHeight: 250
-}"></vue-justified-layout>
-```
-
-## Examples
-
-You can use it with an array of aspect rateo numbers like the example above or you can use an array of object to customize the boxes rendering, for example using custom images:
-
-```js
-{
-  name: 'App',
+  components: {VueJustifiedLayout},
   data () {
     return {
-      options: {
-        targetRowHeight: 250
-      },
-      items: [{
+      images: [{
         width: 250,
         height: 400,
         url: 'https://source.unsplash.com/featured/250x400?green,blue'
@@ -72,26 +40,19 @@ You can use it with an array of aspect rateo numbers like the example above or y
 }
 ```
 
+Then use it to display the array of images with a nice justified layout.
+
 ```html
-<vue-justified-layout :items="items" :options="options"></vue-justified-layout>
+<VueJustifiedLayout :items="images" :options="{}">
+  <template v-slot:content="{item}">
+    <img :src="item.url" />
+  </template>
+</VueJustifiedLayout>
 ```
 
-## Development
+---
 
-Clone the project than install it's dependencies and run the development server.
-
-```bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-# Contributing
+## Contributing
 
 1.  Create an issue reporting a bug or a feature
 2.  Fork the project (<https://github.com/codekraft-studio/vue-justified-layout/fork>)
