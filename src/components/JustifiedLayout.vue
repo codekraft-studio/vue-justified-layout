@@ -22,10 +22,19 @@ export default {
       default: () => ({})
     }
   },
+  data () {
+    return {
+      elementWidth: null
+    }
+  },
   computed: {
     geometry () {
       if (!this.items) return
-      return justifiedLayout(this.items, this.options)
+      const opts = {
+        containerWidth: this.elementWidth,
+        ...this.options
+      }
+      return justifiedLayout(this.items, opts)
     },
     boxes () {
       if (!this.geometry) return []
@@ -52,12 +61,11 @@ export default {
   },
   methods: {
     onResize () {
-      this.$set(this.options, 'containerWidth', this.$el.clientWidth)
-      this.$emit('update:options', this.options)
+      this.elementWidth = this.$el.clientWidth
     }
   },
   mounted () {
-    this.$set(this.options, 'containerWidth', this.options.containerWidth || this.$el.clientWidth)
+    this.elementWidth = this.options.containerWidth || this.$el.clientWidth
     window.addEventListener('resize', this.onResize)
   },
   beforeDestroy () {
