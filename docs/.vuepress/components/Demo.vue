@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <vue-justified-layout :items="items">
-      <template slot="content" slot-scope="{item}">
+      <template slot-scope="{item}">
         <img :src="item.url" />
       </template>
     </vue-justified-layout>

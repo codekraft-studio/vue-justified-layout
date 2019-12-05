@@ -22,10 +22,8 @@ You can customize the content of the rendered boxes. For example if you want to 
 In this case the component provide a named slot called __inner__ to add custom templates to the boxes and expose the current item as __slot scope__.
 
 ```html
-<vue-justified-layout :items="images">
-  <template v-slot:content="{item, index}">
-    <img :src="item.url" />
-  </template>
+<vue-justified-layout :items="images" v-slot="{item, style, index}">
+  <img :src="item.url" />
 </vue-justified-layout>
 ```
 
