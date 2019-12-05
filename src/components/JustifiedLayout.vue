@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="justified-container" :style="style">
-    <div class="justified-item" v-for="(box, index) in boxes" :key="index" :style="box.style">
-      <slot name="content" :item="box" :index="index"></slot>
+    <div class="justified-item" v-for="(box, index) in layout" :key="index" :style="box.style">
+      <slot :item="box.item" :style="box.style" :index="index"></slot>
     </div>
   </div>
 </template>
@@ -36,20 +36,18 @@ export default {
       }
       return justifiedLayout(this.items, opts)
     },
-    boxes () {
+    layout () {
       if (!this.geometry) return []
-      return this.geometry.boxes.map((b, i) => {
-        let obj = typeof this.items[i] === 'object' ? this.items[i] : {}
-        return Object.assign(obj, {
-          style: {
-            height: `${b.height}px`,
-            width: `${b.width}px`,
-            top: `${b.top}px`,
-            left: `${b.left}px`,
-            position: 'absolute'
-          }
-        })
-      })
+      return this.geometry.boxes.map((b, i) => ({
+        item: isNaN(this.items[i]) ? this.items[i] : {},
+        style: {
+          height: `${b.height}px`,
+          width: `${b.width}px`,
+          top: `${b.top}px`,
+          left: `${b.left}px`,
+          position: 'absolute'
+        }
+      }))
     },
     style () {
       if (!this.geometry) return {}
