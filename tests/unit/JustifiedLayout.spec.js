@@ -1,7 +1,22 @@
-import {shallowMount} from '@vue/test-utils'
-import VueJustifiedLayout from '@/components/JustifiedLayout.vue'
+import { shallowMount } from '@vue/test-utils'
+import plugin, { VueJustifiedLayout } from '@/components/index'
 
-describe('JustifiedLayout.vue', () => {
+describe('Vue Justified Layout', () => {
+  describe('installation', () => {
+    const mock = {
+      component: jest.fn()
+    }
+
+    it('should export a function', () => {
+      expect(typeof plugin).toEqual('function')
+    })
+
+    it('should register the component', () => {
+      plugin(mock)
+      expect(mock.component).toHaveBeenCalledWith('VueJustifiedLayout', VueJustifiedLayout)
+    })
+  })
+
   describe('props', () => {
     it('items prop is required', () => {
       const wrapper = shallowMount(VueJustifiedLayout);
