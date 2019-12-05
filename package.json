@@ -1,20 +1,21 @@
 {
   "name": "vue-justified-layout",
-  "description": "Vue integration for Flicker's justified layout module",
   "version": "0.1.0",
+  "description": "Vue integration for Flicker's justified layout module",
   "author": "codekraft-studio <info@codekraft.it>",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib src/components/index.js",
+    "test": "vue-cli-service test:unit --coverage",
+    "lint": "vue-cli-service lint",
+    "docs:build": "vuepress build docs",
+    "docs:dev": "vuepress dev docs",
+    "test:unit": "vue-cli-service test:unit"
+  },
   "main": "dist/vue-justified-layout.umd.js",
   "files": [
     "dist"
   ],
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib src/components/JustifiedLayout.vue",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "lint": "vue-cli-service lint",
-    "test": "vue-cli-service test:unit --coverage"
-  },
   "dependencies": {
     "justified-layout": "^3.0.0",
     "vue": "^2.2"
@@ -22,11 +23,11 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-eslint": "^3.11.0",
-    "@vue/cli-plugin-unit-jest": "^3.11.0",
+    "@vue/cli-plugin-unit-jest": "^3.12.0",
     "@vue/cli-service": "^3.11.0",
-    "@vue/test-utils": "^1.0.0-beta.20",
+    "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^24.9.0",
+    "babel-jest": "^23.6.0",
     "coveralls": "^3.0.6",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.0.0",
