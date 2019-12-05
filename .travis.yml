@@ -1,4 +1,16 @@
 language: node_js
 node_js:
-  - "lts/*"
-after_script: 'cat ./coverage/lcov.info | coveralls'
+  - lts/*
+install:
+  - npm ci
+after_script: "cat ./coverage/lcov.info | coveralls"
+
+before_deploy: npm run docs:build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local_dir: docs/.vuepress/dist
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
