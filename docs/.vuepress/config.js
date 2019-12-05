@@ -1,4 +1,5 @@
 module.exports = {
+  base: '/vue-justified-layout/',
   title: 'Vue Justified Layout',
   description: 'Vue integration for Flicker\'s justified layout module',
   themeConfig: {
