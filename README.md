@@ -16,7 +16,16 @@ It's pretty easy to setup, just download the component with your favorite packag
 npm install vue-justified-layout
 ```
 
-Import the script into your script and register the component.
+Register the component globally using the plugin installation function.
+
+```js
+import Vue from 'vue'
+import VueJustifiedLayout from 'vue-justified-layout'
+
+Vue.use(VueJustifiedLayout)
+```
+
+Or import it into your scripts and register it as local component.
 
 ```js
 import VueJustifiedLayout from 'vue-justified-layout'
@@ -40,11 +49,30 @@ export default {
 }
 ```
 
+Optionally add some style for the images.
+
+```css
+.justified-container {}
+.justified-item {
+  img {
+    max-width: 100%;
+  }
+}
+```
+
 Then use it to display the array of images with a nice justified layout.
 
 ```html
-<VueJustifiedLayout :items="images" :options="{}">
-  <template v-slot:content="{item}">
+<VueJustifiedLayout :items="images" v-slot="{ item }">
+  <img :src="item.url" />
+</VueJustifiedLayout>
+```
+
+Or for `vue < 2.6.0` versions using the old synthax.
+
+```html
+<VueJustifiedLayout :items="images">
+  <template slot-scope="{ item }">
     <img :src="item.url" />
   </template>
 </VueJustifiedLayout>

@@ -2,8 +2,12 @@
   <div id="app">
     <header class="navbar navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="https://github.com/codekraft-studio" target="_blank">
-          <img src="https://vuejs.org/images/logo.png" width="42" height="42" class="mr-2">
+        <a
+          class="navbar-brand d-flex align-items-center"
+          href="https://github.com/codekraft-studio"
+          target="_blank"
+        >
+          <img src="https://vuejs.org/images/logo.png" width="42" height="42" class="mr-2" />
           <h1 class="m-0">Vue Justified Layout</h1>
         </a>
       </div>
@@ -13,14 +17,18 @@
       <div class="section">
         <h2>What it is?</h2>
         <p class="lead">
-          It's the simplest way to integrate <a href="#">Flickr</a> justified-layout inside your VueJs applications or websites.
+          It's the simplest way to integrate
+          <a href="#">Flickr</a> justified-layout inside your VueJs applications or websites.
           It's easy for developers to use, it fits in any kind of container, supports pagination and infinite scroll and supports layouts other than justified, like square thumbnails and grid layout with native aspect ratio.
-          If you want more informations about how the justified-layout algorithm works you can read <a href="http://code.flickr.net/2015/03/24/much-photos/">this</a> article from the script creator.
+          If you want more informations about how the justified-layout algorithm works you can read
+          <a
+            href="http://code.flickr.net/2015/03/24/much-photos/"
+          >this</a> article from the script creator.
         </p>
 
         <vue-justified-layout :items="fixedImages">
-          <template slot="inner" slot-scope="slotProps">
-            <img class="inner" :src="slotProps.item.url" />
+          <template slot-scope="{ item }">
+            <img :src="item.url" />
           </template>
         </vue-justified-layout>
       </div>
@@ -29,11 +37,17 @@
         <h2>How it works?</h2>
         <p class="lead">
           It’s really easy to use. No configuration is required. Just pass in an array of aspect ratios representing the photos/boxes you’d like to lay out or an array of objects.
-          It will automagically listen for items change and reload the <b>justified-layout geometry</b> that produces this awesome grid.
+          It will automagically listen for items change and reload the
+          <b>justified-layout geometry</b> that produces this awesome grid.
         </p>
-        <vue-justified-layout :items="images" test.sync="prova" :options.sync="boxesOptions" class="random">
-          <template slot="inner" slot-scope="slotProps">
-            <img class="inner" :src="slotProps.item.url" @click="removeItem(slotProps.index)" />
+        <vue-justified-layout
+          :items="images"
+          test.sync="prova"
+          :options.sync="boxesOptions"
+          class="random"
+        >
+          <template slot-scope="{ item, index }">
+            <img :src="item.url" @click="removeItem(index)" />
           </template>
         </vue-justified-layout>
       </div>
@@ -41,7 +55,8 @@
 
     <footer class="footer fixed-bottom bg-light">
       <div class="container text-center">
-        Made with &hearts; by <a href="https://github.com/codekraft-studio">codekraft-studio</a>
+        Made with &hearts; by
+        <a href="https://github.com/codekraft-studio">codekraft-studio</a>
       </div>
     </footer>
   </div>
@@ -54,6 +69,7 @@ export default {
   name: 'app',
   data () {
     return {
+      showSection: false,
       boxesOptions: {
         targetRowHeight: 120
       },
@@ -110,7 +126,8 @@ export default {
 </script>
 
 <style lang="scss">
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -119,9 +136,9 @@ html, body {
 
 #app {
   a {
-    color: #388E3C;
+    color: #388e3c;
     &:hover {
-      color: #2E7D32;
+      color: #2e7d32;
     }
   }
 
@@ -132,11 +149,6 @@ html, body {
 
   main.container {
     margin-bottom: 100px;
-    .inner {
-      width: 100%;
-      height: 100%;
-    }
-
     .section {
       margin-bottom: 20px;
     }
@@ -148,22 +160,26 @@ html, body {
     border: thin solid #eee;
 
     &.random .justified-item:nth-child(even) {
-      background-color: #81C784;
+      background-color: #81c784;
     }
 
     &.random .justified-item:nth-child(odd) {
-      background: #26A69A;
+      background: #26a69a;
     }
 
     .justified-item {
       cursor: pointer;
 
+      img {
+        max-width: 100%;
+      }
+
       &:nth-child(even) {
-        background-color: #EF5350;
+        background-color: #ef5350;
       }
 
       &:nth-child(odd) {
-        background: #26A69A;
+        background: #26a69a;
       }
     }
   }
