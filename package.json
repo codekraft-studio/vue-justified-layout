@@ -1,6 +1,6 @@
 {
   "name": "vue-justified-layout",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Vue integration for Flicker's justified layout module",
   "author": "codekraft-studio <info@codekraft.it>",
   "scripts": {
