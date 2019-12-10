@@ -4,6 +4,7 @@
   "description": "Vue integration for Flicker's justified layout module",
   "author": "codekraft-studio <info@codekraft.it>",
   "scripts": {
+    "prepublishOnly": "npm run build",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib src/components/index.js",
     "test": "vue-cli-service test:unit --coverage",
