@@ -1,7 +1,7 @@
 {
   "name": "vue-justified-layout",
   "version": "0.2.0",
-  "description": "Vue integration for Flicker's justified layout module",
+  "description": "Vue integration for Flickr's justified layout module",
   "author": "codekraft-studio <info@codekraft.it>",
   "scripts": {
     "prepublishOnly": "npm run build",

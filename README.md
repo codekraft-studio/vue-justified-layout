@@ -2,7 +2,7 @@
 
 # vue-justified-layout
 
-> Vue integration for Flicker's justified layout module
+> Vue integration for Flickr's justified layout module
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 
