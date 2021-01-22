@@ -18,7 +18,7 @@
     "dist"
   ],
   "dependencies": {
-    "justified-layout": "^3.0.0",
+    "justified-layout": "^4.1.0",
     "vue": "^2.2"
   },
   "devDependencies": {
